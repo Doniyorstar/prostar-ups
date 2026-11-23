@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prostar UPS Uzbekistan</title>
+<meta name="description" content="Prostar Online UPS — O'zbekistondagi rasmiy distribyutor. 3, 6, 10 kVA omborda, 20–600 kVA buyurtma asosida. Tibbiyot, bank, data-markaz va sanoat uchun.">
+<link rel="icon" type="image/png" href="/img/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Prostar UPS">
+<meta property="og:title" content="Prostar Online UPS — O'zbekistondagi rasmiy distribyutor">
+<meta property="og:description" content="3, 6, 10 kVA omborda. 20–600 kVA buyurtmaga. Tibbiyot, bank, data-markaz va sanoat uchun.">
+<meta property="og:url" content="https://prostar-ups.vercel.app/">
+<meta property="og:image" content="https://prostar-ups.vercel.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#024A9E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: ishonchli muhandislik firmasi — aniq, toza, B2B
+   IDEA: UPS — filtr: notekis tok kiradi, sof sinusoida chiqadi
+   PICTURE: heroda jonli sxema: yurak urishi chizig'i → 3 kVA UPS → sof sinusoida; butun sahifa ortida yorug' harakatlanuvchi fon
+   COLOUR and TYPE: oq fon, Prostar ko'k #024A9E va to'q sariq #FA5A05; Manrope 800 + 400
+   LAYOUT: hero → afzalliklar → modellar → generator → kalkulyator → sohalar → tender → aloqa */
+:root{color-scheme:light;--bg:#ffffff;--ink:#0b1f3f;--sl:#4d5f7c;--line:#dfe7f3;--card:rgba(255,255,255,.86);--pb:#024a9e;--blue:#1f6fd6;--y:#fa5a05;--yh:#ff6f1f;--g:#17a35a;--o:#e89a00;--soft:#f3f7fd}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;overflow-x:clip}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+main,nav,footer{position:relative;z-index:1}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(48px,7vw,100px) max(5vw,16px)}
+h1,h2,h3{margin:0;line-height:1.08;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:12px;color:var(--pb)}
+h3{font-size:19px}
+.lead{color:var(--sl);max-width:62ch;margin:0 0 32px;font-size:17px}
+.card{background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 32px rgba(2,50,120,.08)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:10px;font:inherit;font-weight:700;text-decoration:none;border:0;cursor:pointer}
+.btn.y{background:var(--y);color:#fff;box-shadow:0 8px 22px rgba(250,90,5,.3)}
+.btn.y:hover{background:var(--yh)}
+.btn.o{background:#fff;color:var(--pb);box-shadow:inset 0 0 0 1.5px var(--pb)}
+a:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:20px;padding:10px max(5vw,16px);transition:background .3s,box-shadow .3s}
+nav.s{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(2,50,120,.08)}
+.logo img{display:block;height:56px;width:auto}
+.links{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+.links a{text-decoration:none;font-weight:700;color:var(--pb)}.links a:hover{color:var(--y)}
+nav .btn{min-height:44px;padding:0 18px}
+.lang{display:flex;gap:2px;padding:3px;border-radius:10px;background:var(--soft);border:1px solid var(--line)}
+.lang button{min-width:40px;min-height:38px;border:0;border-radius:8px;background:transparent;color:var(--pb);font:inherit;font-size:14px;font-weight:800;cursor:pointer}
+.lang button.on{background:var(--pb);color:#fff}
+@media(max-width:960px){.links{display:none}.lang{margin-left:auto}}
+@media(max-width:600px){nav .btn{display:none}nav{gap:10px}}
+@media(max-width:600px){.logo img{height:40px}}
+/* hero */
+.hero{padding:92px max(5vw,16px) 40px}
+.hc{text-align:center}
+.tag{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:800;color:var(--y);margin-bottom:14px}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--y)}
+.hero h1{font-size:clamp(30px,4.2vw,52px);color:var(--pb);max-width:28ch;margin:0 auto}
+.hero p{font-size:17px;max-width:60ch;color:var(--sl);margin:12px auto 20px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.stage{position:relative;height:clamp(210px,25vw,320px);margin:14px 0 6px}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.ups{position:absolute;left:50%;top:50%;height:92%;transform:translate(-50%,-50%);display:flex;align-items:center}
+.ups img{height:100%;width:auto;filter:drop-shadow(0 26px 28px rgba(2,40,100,.28))}
+.ups::after{content:"";position:absolute;left:8%;right:8%;bottom:-2%;height:16px;border-radius:50%;background:radial-gradient(closest-side,rgba(2,40,100,.25),transparent);z-index:-1}
+.legend{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start;font-size:14px;font-weight:700}
+.legend .l{color:#c0392b;text-align:left}.legend .c{color:var(--pb);text-align:center}.legend .r{color:var(--y);text-align:right}
+.legend small{display:block;font-weight:500;color:var(--sl)}
+@media(max-width:600px){.ups{height:66%}.stage{height:230px}.legend{font-size:13px}.legend .c{display:none}.legend{grid-template-columns:1fr 1fr}}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:20px;overflow:hidden}
+.stats div{padding:18px 20px;border-left:1px solid var(--line)}.stats div:first-child{border:0}
+.stats b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:800;white-space:nowrap;color:var(--pb)}
+.stats span{font-size:14px;color:var(--sl)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.feat div{padding:22px}
+.feat h3{color:var(--pb)}
+.feat p{color:var(--sl);margin:8px 0 0}
+@media(max-width:860px){.feat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.feat{grid-template-columns:1fr}}
+/* products */
+.prods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.prod{padding:24px;display:flex;flex-direction:column;gap:14px}
+.pic{position:relative;height:300px;border-radius:12px;background:radial-gradient(circle at 50% 75%,#e6effb,transparent 70%)}
+.pic img,.pic svg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.pic img{z-index:1;padding:4px}
+.pic img~svg{display:none}
+.pbox{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:12px;background:#fff1e8}
+.pbox>span:first-child{font-size:14px;font-weight:700;color:#b83f00}
+.price{font-size:30px;font-weight:800;color:var(--y);white-space:nowrap;line-height:1}
+.price small{font-size:.55em;font-weight:700;vertical-align:baseline}
+.price i{font-style:normal;font-size:.5em;font-weight:700}
+.rprice{margin-top:10px;font-weight:700}.rprice .price{color:#fff;font-size:24px}
+.kva{font-size:40px;font-weight:800;line-height:1;color:var(--pb)}
+.kva small{font-size:18px;color:var(--sl)}
+.st{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700}
+.st::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--g)}
+.st.ord::before{background:var(--o)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:13px;font-weight:700;padding:5px 10px;border-radius:20px;background:#fff1e8;color:#b83f00;white-space:nowrap}
+.spec{list-style:none;margin:0;padding:0;font-size:15px;color:var(--sl)}
+.spec li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+.spec b{color:var(--ink);font-weight:700;white-space:nowrap}
+.prod .btn{margin-top:auto}
+.spec li:last-child{border-bottom:0}
+.specs{margin-top:20px;padding:0 22px}
+.specs summary{cursor:pointer;font-weight:800;color:var(--pb);min-height:56px;display:flex;align-items:center}
+.scroll{overflow-x:auto;padding-bottom:18px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--pb);font-weight:800;white-space:nowrap}
+td:first-child{color:var(--sl);width:32%}
+td[colspan]{text-align:center}
+.big{margin-top:20px;padding:24px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center}
+.big h3{color:var(--pb)}
+.big .m{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.big .m span{padding:7px 12px;border-radius:8px;background:var(--soft);color:var(--pb);font-weight:700;font-size:15px;white-space:nowrap}
+@media(max-width:860px){.prods{grid-template-columns:1fr}}
+/* generator */
+.gen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:40px;align-items:center}
+@media(max-width:900px){.gen{grid-template-columns:1fr}}
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{position:relative;padding:0 0 22px 46px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--y);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.steps li::after{content:"";position:absolute;left:15px;top:32px;bottom:2px;width:1.5px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps b{display:block}.steps span{color:var(--sl);font-size:15px}
+.tl{padding:22px}
+.bimg{border-radius:12px;overflow:hidden}
+.bimg img{display:block;width:100%;height:auto;transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.8,.2,1)}
+.tl.in .bimg img{transform:none}
+@media(prefers-reduced-motion:reduce){.bimg img{transform:none;transition:none}}
+.deck{transform-origin:140px 146px;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.8,.2,1) .3s}
+.tl.in .deck{transform:none}
+.pulse{stroke-dasharray:90 700;stroke-dashoffset:90;animation:flow 2.6s linear infinite;filter:drop-shadow(0 0 6px rgba(23,163,90,.7))}
+@keyframes flow{to{stroke-dashoffset:-700}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none;stroke-dasharray:none}.deck{transition:none}}
+.blg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px;font-size:14px}
+.blg b{display:block;font-size:15px}.blg span{color:var(--sl)}
+@media(max-width:560px){.blg{grid-template-columns:1fr}}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:960px){.calc{grid-template-columns:1fr}}
+.panel{padding:22px}
+.row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) 78px 70px 44px;gap:8px;margin-bottom:8px;align-items:center}
+.row.h{font-size:13px;color:var(--sl);font-weight:700;margin-bottom:6px}
+input,select{font:inherit;font-size:16px;min-height:44px;width:100%;padding:0 10px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.x{min-height:44px;border-radius:8px;border:0;background:var(--soft);color:var(--sl);font-size:20px;cursor:pointer}
+@media(max-width:560px){.row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;padding-bottom:10px;border-bottom:1px solid var(--line)}.row .nm{grid-column:1/-1}.row.h{display:none}}
+.grp{font-size:13px;font-weight:800;color:var(--pb);margin:18px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:38px;padding:0 12px;border-radius:20px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+.chips button:hover{border-color:var(--y);color:#b83f00}
+.add{background:none;border:0;color:var(--pb);font:inherit;font-weight:800;cursor:pointer;min-height:44px;padding:0;text-decoration:underline}
+label.t{display:block;font-weight:700;margin:20px 0 8px}
+.res{padding:26px;position:sticky;top:96px;background:var(--pb);color:#fff;border-radius:16px;box-shadow:0 18px 40px rgba(2,74,158,.3)}
+.res .lbl{font-size:14px;color:#b9cdee}
+.res .model{font-size:clamp(40px,5vw,58px);font-weight:800;line-height:1;margin:6px 0 6px;color:#fff}
+.res .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;padding:18px 0;border-block:1px solid rgba(255,255,255,.2)}
+.res .grid b{display:block;font-size:22px;white-space:nowrap}
+.res p{margin:0 0 12px;color:#e3ecfa;font-size:15px}
+.res .st::before{box-shadow:0 0 0 2px rgba(255,255,255,.4)}
+.res .btn{width:100%;margin-top:8px}
+.res .btn.o{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.warn{background:#fff4e0;color:#8a4b00;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:14px}
+.note{font-size:13px;color:var(--sl);margin-top:14px}
+.res .note{color:#b9cdee}
+/* sectors */
+.sect{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.sect div{padding:22px}
+.sect h3{color:var(--pb)}
+.sect p{color:var(--sl);margin:8px 0 0;font-size:15px}
+@media(max-width:860px){.sect{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.sect{grid-template-columns:1fr}}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.docs{list-style:none;padding:8px 22px;margin:0}
+.docs li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;font-weight:700}
+.docs li:last-child{border:0}
+.docs li span{color:var(--sl);font-size:14px;font-weight:500;white-space:nowrap}
+.win{padding-top:0}
+.wcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;padding:clamp(24px,4vw,44px);border-radius:20px;background:linear-gradient(135deg,#fff4ec,#ffffff 60%);border:1.5px solid #ffd2b8;box-shadow:0 16px 40px rgba(250,90,5,.10)}
+.wcard h2{font-size:clamp(26px,3vw,38px)}
+.wlist{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:w}
+.wlist li{position:relative;padding:16px 16px 16px 60px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.wlist li::before{counter-increment:w;content:counter(w);position:absolute;left:16px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--y);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.wlist b{display:block;color:var(--pb)}.wlist span{color:var(--sl);font-size:15px}
+@media(max-width:860px){.wcard{grid-template-columns:1fr}}
+.store{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:36px;align-items:center}
+.saddr{font-size:19px;font-weight:800;color:var(--pb);margin-bottom:20px;padding-left:30px;position:relative}
+.saddr::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--y)}
+.saddr small{display:block;font-size:15px;font-weight:700;color:var(--y);margin-top:4px}
+.gal{grid-column:1/-1;display:grid;grid-template-columns:1.15fr 1.15fr .8fr;gap:16px}
+.gal figure{margin:0;position:relative;border-radius:16px;overflow:hidden;height:300px;box-shadow:0 12px 30px rgba(2,50,120,.12)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:8px;background:rgba(2,74,158,.9);color:#fff;font-weight:700;font-size:14px}
+@media(max-width:860px){.gal{grid-template-columns:1fr 1fr}.gal figure{height:220px}.gal figure:last-child{grid-column:1/-1;height:320px}}
+.sbtn{display:flex;flex-wrap:wrap;gap:10px}
+.map{display:block;position:relative;height:clamp(260px,32vw,400px);overflow:hidden;padding:0}
+.map svg,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media(max-width:860px){.store{grid-template-columns:1fr}}
+.contact{background:var(--pb);color:#fff}
+.contact h2{color:#fff}.contact .lead{color:#c9d8f0}
+.cl{display:grid;gap:12px}
+.cl a{display:flex;justify-content:space-between;gap:12px;padding:18px 20px;border-radius:12px;background:rgba(255,255,255,.1);text-decoration:none;font-weight:700}
+.cl a span{color:#c9d8f0;font-weight:500;text-align:right}
+.contact .note{color:#c9d8f0}
+footer{color:#c9d8f0;font-size:14px;padding:24px max(5vw,16px);background:#013a7d}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<nav id="nav">
+  <a class="logo" href="#top"><img src="img/logo.png" alt="Prostar"></a>
+  <div class="links"><a href="#models">Modellar</a><a href="#generator">Generator</a><a href="#calc">Kalkulyator</a><a href="#sectors">Sohalar</a><a href="#winners">Tender</a><a href="#contact">Aloqa</a></div>
+  <div class="lang" role="group" aria-label="Til / Язык / Language"><button data-l="uz">UZ</button><button data-l="ru">RU</button><button data-l="en">EN</button></div>
+  <a class="btn y tg" href="#">Telegramda savol</a>
+</nav>
+
+<main id="top">
+<header class="hero"><div class="wrap">
+  <div class="hc">
+    <div class="tag">O'zbekistondagi rasmiy distribyutor</div>
+    <h1>Notekis tok kiradi — sof sinusoida chiqadi</h1>
+    <p>Prostar Online UPS tarmoqdagi sakrash va uzilishlarni o'zida "yutib", uskunangizga doim toza 220 V beradi. Elektr o'chsa — 0 ms ichida batareyaga o'tadi.</p>
+    <div class="cta"><a class="btn y" href="#calc">UPS tanlash</a><a class="btn o" href="#models">Modellar</a></div>
+  </div>
+  <div class="stage" id="stage">
+    <canvas id="flow" aria-hidden="true"></canvas>
+    <div class="ups"><img src="img/hero-3k.webp" alt="Prostar PET1103B 3 kVA Online UPS"></div>
+  </div>
+  <div class="legend">
+    <div class="l">Kirish: notekis tarmoq<small>sakrash, pasayish, shovqin</small></div>
+    <div class="c">Prostar 3 kVA<small>Double Conversion · 0 ms</small></div>
+    <div class="r">Chiqish: sof sinusoida<small>220 V ±1%, THD ≤ 3%</small></div>
+  </div>
+  <div class="stats card">
+    <div><b>0 ms</b><span>o'tish vaqti</span></div>
+    <div><b>PF = 1</b><span>1 kVA = 1 kW</span></div>
+    <div><b>3 · 6 · 10 kVA</b><span>omborda bor</span></div>
+    <div><b>20–600 kVA</b><span>buyurtmaga, 45 kun</span></div>
+  </div>
+</div></header>
+
+<section class="band"><div class="wrap">
+  <h2 class="rv">Nega aynan Online UPS</h2>
+  <p class="lead rv">UPS stabilizator emas. U elektrni ikki marta o'zgartiradi va uskunaga doim toza, barqaror kuchlanish beradi.</p>
+  <div class="feat">
+    <div class="card rv"><h3>Double Conversion</h3><p>Tarmoqdagi sakrash, pasayish va shovqin uskunaga yetib bormaydi.</p></div>
+    <div class="card rv"><h3>0 ms o'tish</h3><p>Elektr uzilganda kompyuter, server yoki tibbiy apparat o'chmaydi.</p></div>
+    <div class="card rv"><h3>Toza sinusoida</h3><p>MRT, KT, UZI, laboratoriya va server uskunalari uchun xavfsiz.</p></div>
+    <div class="card rv"><h3>Generator bilan ishlaydi</h3><p>Generator chastotasi o'zgarsa ham chiqish barqaror qoladi.</p></div>
+    <div class="card rv"><h3>Bypass va himoya</h3><p>Ortiqcha yuklama, qisqa tutashuv va batareya himoyasi.</p></div>
+    <div class="card rv"><h3>Monitoring</h3><p>LCD displey, RS-232, USB, SNMP ixtiyoriy.</p></div>
+  </div>
+</div></section>
+
+<section class="band" id="models"><div class="wrap">
+  <h2 class="rv">Omborda mavjud modellar</h2>
+  <p class="lead rv">PET seriyasi — yuqori chastotali Online UPS, ichki 12V 9Ah batareyalar bilan.</p>
+  <div class="prods" id="prods" data-dyn></div>
+  <details class="specs card rv">
+    <summary>To'liq texnik parametrlar (tender uchun)</summary>
+    <div class="scroll"><table>
+      <thead><tr><th>Parametr</th><th>PET1103B</th><th>PET1106B</th><th>PET1110B</th></tr></thead>
+      <tbody>
+        <tr><td>Quvvat (VA/W)</td><td>3K / 3K</td><td>6K / 6K</td><td>10K / 10K</td></tr>
+        <tr><td>Batareya kuchlanishi</td><td>72 VDC</td><td>192 VDC</td><td>192 VDC</td></tr>
+        <tr><td>Batareyalar</td><td>12V 9Ah × 6</td><td>12V 9Ah × 16</td><td>12V 9Ah × 16</td></tr>
+        <tr><td>Zaryad toki</td><td>1A (1–4A)</td><td>1A (1–12A)</td><td>1A (1–12A)</td></tr>
+        <tr><td>Kirish formati / kuchlanish</td><td colspan="3">L+N+PE · 208/220/230/240 VAC</td></tr>
+        <tr><td>Kirish diapazoni</td><td colspan="3">110–300 VAC · 50/60 Hz ±6 Hz</td></tr>
+        <tr><td>Kirish quvvat koeffitsienti</td><td colspan="3">≥ 0.99</td></tr>
+        <tr><td>Chiqish quvvat koeffitsienti</td><td colspan="3">1</td></tr>
+        <tr><td>Chiqish kuchlanishi aniqligi</td><td colspan="3">±1% · batareya rejimida 50/60 Hz ±1%</td></tr>
+        <tr><td>Chiqish THD (chiziqli yuklama)</td><td>≤ 3%</td><td>≤ 2%</td><td>≤ 2%</td></tr>
+        <tr><td>To'lqin shakli</td><td colspan="3">Toza sinusoida</td></tr>
+        <tr><td>O'tish vaqti (tarmoq → batareya)</td><td colspan="3">0 ms</td></tr>
+        <tr><td>Ortiqcha yuklama (tarmoq rejimi)</td><td colspan="3">102–110%: 30 daq · 110–130%: 10 daq · 130–150%: 30 s</td></tr>
+        <tr><td>O'lchami (↔ × ↗ × ↕)</td><td>39.5 × 19 × 33 sm</td><td>47.5 × 19 × 69.6 sm</td><td>47.5 × 19 × 69.6 sm</td></tr>
+        <tr><td>Og'irligi</td><td>20 kg</td><td>52 kg</td><td>53 kg</td></tr>
+        <tr><td>Ish harorati / namlik</td><td colspan="3">0–40 °C · 20–95% (kondensatsiyasiz)</td></tr>
+        <tr><td>Shovqin</td><td colspan="3">&lt; 45 dB (1 m)</td></tr>
+        <tr><td>Boshqaruv</td><td colspan="3">LCD · RS-232 / USB · SNMP ixtiyoriy</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+  <div class="big card rv">
+    <div><h3>Katta quvvatli UPS — 20 dan 600 kVA gacha</h3><p style="margin:6px 0 0;color:var(--sl)">Bino, shifoxona, zavod va data-markazlar uchun. Buyurtma asosida.</p></div>
+    <div class="m" id="big" data-dyn></div>
+    <span class="st ord">45 kunda yetkaziladi</span>
+  </div>
+</div></section>
+
+<section class="band" id="generator"><div class="wrap gen">
+  <div>
+    <h2 class="rv">Elektr o'chganda — generator yonguncha UPS ishlaydi</h2>
+    <p class="lead rv">Katta binolarda generator ishga tushishi uchun 10–30 soniya kerak. Shu vaqtda UPS uskunalarni bir lahza ham o'chirmasdan ushlab turadi.</p>
+    <ol class="steps rv">
+      <li><b>Tarmoq uzildi</b><span>UPS 0 ms ichida batareyaga o'tadi</span></li>
+      <li><b>Generator ishga tushmoqda</b><span>10–30 soniya: yuklamani UPS ushlab turadi</span></li>
+      <li><b>ATS generatorga ulaydi</b><span>UPS generator kuchlanishini tozalab uzatadi</span></li>
+      <li><b>Tarmoq qaytdi</b><span>Hech qanday uzilishsiz, batareyalar qayta zaryadlanadi</span></li>
+    </ol>
+  </div>
+  <div class="tl card rv" id="tl">
+    <div class="bimg"><img src="img/bridge.jpg" alt="Tarmoq uzilganda Prostar UPS ko'prik bo'lib, generator yonguncha shifoxonaga tokni uzatadi" loading="lazy"></div>
+    <div class="blg">
+      <div><b style="color:var(--pb)">1. Tarmoq</b><span>elektr uzildi</span></div>
+      <div><b style="color:var(--y)">2. UPS — ko'prik</b><span>0 ms ichida batareyaga, 10–30 s ushlab turadi</span></div>
+      <div><b style="color:var(--g)">3. Generator va shifoxona</b><span>generator ulanguncha uskunalar uzluksiz ishlaydi</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" id="calc"><div class="wrap">
+  <h2 class="rv">UPS kalkulyatori</h2>
+  <p class="lead rv">Uskunalaringiz va quvvatini kiriting (W yoki kW). Kalkulyator kerakli modelni va taxminiy ishlash vaqtini hisoblaydi.</p>
+  <div class="calc">
+    <div class="panel card">
+      <div class="row h"><span>Uskuna</span><span>Quvvat</span><span>Birlik</span><span>Soni</span><span></span></div>
+      <div id="rows" data-dyn></div>
+      <button class="add" id="add">+ Uskuna qo'shish</button>
+      <div class="grp">Tibbiy uskunalar</div><div class="chips" id="chMed" data-dyn></div>
+      <div class="grp">IT va ofis</div><div class="chips" id="chIt" data-dyn></div>
+      <p class="note">Ro'yxatdagi quvvatlar taxminiy. Aniq qiymatni uskuna pasportidan oling.</p>
+      <label class="t" for="tm">Elektr o'chganda qancha ishlashi kerak?</label>
+      <select id="tm"><option value="5">5 daqiqa — generator yonguncha</option><option value="10">10 daqiqa</option><option value="15">15 daqiqa</option><option value="30" selected>30 daqiqa</option><option value="60">1 soat</option><option value="120">2 soat</option><option value="240">4 soat</option></select>
+    </div>
+    <div class="res" id="res" data-dyn aria-live="polite"></div>
+  </div>
+</div></section>
+
+<section class="band" id="sectors"><div class="wrap">
+  <h2 class="rv">Kimlar uchun</h2>
+  <p class="lead rv">Bir soniyalik uzilish ham qimmatga tushadigan joylar uchun.</p>
+  <div class="sect">
+    <div class="card rv"><h3>Tibbiyot</h3><p>MRT, KT, C-duga, UZI, laboratoriya, reanimatsiya va operatsion xonalar.</p></div>
+    <div class="card rv"><h3>Banklar</h3><p>Kassa, bankomat, server va xavfsizlik tizimlari.</p></div>
+    <div class="card rv"><h3>Data-markaz va IT</h3><p>Server xonalari, call-center, internet provayderlar.</p></div>
+    <div class="card rv"><h3>Sanoat</h3><p>Zavodlar, farmatsevtika, avtomatlashtirilgan liniyalar.</p></div>
+    <div class="card rv"><h3>Davlat tashkilotlari</h3><p>Shifoxona, maktab, hokimiyat — tender orqali yetkazib berish.</p></div>
+    <div class="card rv"><h3>Katta binolar</h3><p>Biznes-markaz, mehmonxona: generator yonguncha uzluksiz ta'minot.</p></div>
+  </div>
+</div></section>
+
+<section class="band win" id="winners" style="padding-top:clamp(48px,7vw,100px)"><div class="wrap">
+  <div class="wcard rv">
+    <div class="whead">
+      <h2>Tenderda g'olib bo'ldingizmi? UPS ni biz yetkazib beramiz</h2>
+      <p class="lead">Davlat xaridlarida g'olib bo'lgan kompaniyalarga Prostar UPS larini shartnoma muddatida, to'liq hujjatlari bilan yetkazib beramiz.</p>
+      <a class="btn y tg" href="#">Shartnoma bo'yicha so'rov yuborish</a>
+    </div>
+    <ol class="wlist">
+      <li><b>Omborda tayyor</b><span>3, 6 va 10 kVA darhol jo'natiladi, 20–600 kVA — 45 kunda.</span></li>
+      <li><b>Texnik topshiriqqa moslik</b><span>Texnik topshiriqni tekshirib, mos modelni tanlab beramiz.</span></li>
+      <li><b>To'liq hujjatlar</b><span>Hisob-faktura, sertifikatlar, distribyutorlik xati, kafolat.</span></li>
+      <li><b>Obyektgacha yetkazib berish</b><span>Shartnomada ko'rsatilgan manzilga yetkazamiz.</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="band" id="store"><div class="wrap store">
+  <div class="sinfo rv">
+    <h2>Bizning do'kon</h2>
+    <p class="lead">Do'konimizga keling — UPS larni jonli ko'rib, mutaxassis bilan maslahatlashing.</p>
+    <div class="saddr">Toshkent shahri, Sergeli tumani, INDEX savdo majmuasi<small>A3 bino, A3-6 do'kon</small></div>
+    <div class="sbtn">
+      <a class="btn y" href="https://yandex.ru/navi?whatshere%5Bpoint%5D=69.23788405588445%2C41.20506353653883&amp;whatshere%5Bzoom%5D=17.377216&amp;ll=69.23788405588445%2C41.20506353616353&amp;z=17.377216&amp;si=8p549dm9e7g4kpappa2q5vpu90">Yandex Navigator</a>
+      <a class="btn o" href="https://yandex.uz/maps/?pt=69.237884,41.205064&amp;z=17&amp;l=map">Yandex Xaritalar</a>
+      <a class="btn o" href="https://www.google.com/maps?q=41.205064,69.237884">Google Xaritalar</a>
+    </div>
+  </div>
+  <a class="map card rv" id="map" href="https://yandex.uz/maps/?pt=69.237884,41.205064&amp;z=17&amp;l=map" aria-label="Xarita">
+    <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="600" height="380" fill="#eef3f9"/>
+      <g fill="#dfe8f3"><rect x="20" y="20" width="150" height="100" rx="6"/><rect x="200" y="20" width="170" height="100" rx="6"/><rect x="400" y="20" width="180" height="100" rx="6"/><rect x="20" y="150" width="150" height="90" rx="6"/><rect x="400" y="150" width="180" height="90" rx="6"/><rect x="20" y="270" width="150" height="90" rx="6"/><rect x="200" y="270" width="170" height="90" rx="6"/><rect x="400" y="270" width="180" height="90" rx="6"/></g>
+      <rect x="200" y="150" width="170" height="90" rx="6" fill="#ffe3d2"/>
+      <g stroke="#fff" stroke-width="14"><path d="M0 135H600M0 255H600M185 0V380M385 0V380"/></g>
+      <path d="M0 330 Q300 300 600 345" stroke="#ffd2b8" stroke-width="10" fill="none"/>
+      <g transform="translate(285 112)"><path d="M0 0c-22 0-38 16-38 37 0 28 38 63 38 63s38-35 38-63C38 16 22 0 0 0z" fill="#fa5a05"/><circle cy="36" r="14" fill="#fff"/></g>
+      <rect x="226" y="212" width="118" height="24" rx="6" fill="#024a9e"/><text x="285" y="229" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="13" fill="#fff">INDEX · PROSTAR</text>
+    </svg>
+  </a>
+  <div class="gal">
+    <figure class="rv"><img src="img/store-a3.webp" alt="INDEX savdo majmuasi, A3 bino" loading="lazy"><figcaption>A3 bino</figcaption></figure>
+    <figure class="rv"><img src="img/store-front.webp" alt="Prostar do'koni A3-6" loading="lazy"><figcaption>A3-6 do'kon</figcaption></figure>
+    <figure class="rv"><img src="img/store-stock.webp" alt="Prostar omborida tayyor UPS lar" loading="lazy"><figcaption>Omborda tayyor UPS lar</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap split">
+  <div>
+    <h2 class="rv">Savolingiz bormi?</h2>
+    <p class="lead rv">Qo'ng'iroq qiling yoki Telegramda yozing — mos UPS ni tanlab, narx taklifini tayyorlab beramiz.</p>
+    <a class="btn y tg rv" href="#">Telegramda yozish</a>
+  </div>
+  <div class="cl rv">
+    <div class="cl" id="phs"></div>
+    <a id="tgL" href="#">Telegram<span id="tgT"></span></a>
+    <a id="igL" href="#">Instagram<span id="igT"></span></a>
+    <a class="addr" href="https://yandex.uz/maps/?pt=69.237884,41.205064&amp;z=17&amp;l=map">Manzil<span>Toshkent shahri, Sergeli tumani, INDEX savdo majmuasi, A3-6</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Prostar UPS Uzbekistan — Guangdong Prostar New Energy Technology Co., Ltd. rasmiy distribyutori · prostarups.uz · +998 77 122 1444</div></footer>
+
+<script>
+{
+// ====== SOZLAMALAR — shu yerni o'zgartiring ======
+const CFG = {
+  phones: ['+998 77 122 1444', '+998 20 034 1444', '+998 33 044 1444'],
+  telegram: 'ProstarUPS',          // username, @ siz
+  instagram: 'prostar.uzbekistan'
+};
+// =================================================
+const TG = 'https://t.me/' + CFG.telegram;
+const $ = id => document.getElementById(id);
+document.querySelectorAll('.tg').forEach(a => a.href = TG);
+$('phs').innerHTML = CFG.phones.map(p => `<a href="tel:${p.replace(/\s/g, '')}">Telefon<span>${p}</span></a>`).join('');
+$('tgL').href = 'https://t.me/' + CFG.telegram; $('tgT').textContent = '@' + CFG.telegram;
+$('igL').href = 'https://instagram.com/' + CFG.instagram; $('igT').textContent = '@' + CFG.instagram;
+const nav = $('nav');
+const still = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// ====== Yorug' jonli fon: scroll bilan harakatlanadi ======
+const cv = $('bg'), cx = cv.getContext('2d');
+let W = 0, H = 0, sy = scrollY, ty = scrollY;
+const size = () => { const d = Math.min(devicePixelRatio || 1, 1.5); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0); };
+const bgDraw = t => {
+  sy += (ty - sy) * .08;
+  const p = sy / Math.max(1, document.documentElement.scrollHeight - H);
+  const g = cx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#ffffff'); g.addColorStop(1, `hsl(${214 + p * 8},70%,${96 - p * 2}%)`);
+  cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+  cx.strokeStyle = 'rgba(2,74,158,.05)'; cx.lineWidth = 1;
+  const gs = 56, oy = -(sy * .35) % gs;
+  cx.beginPath();
+  for (let x = 0; x < W; x += gs) { cx.moveTo(x, 0); cx.lineTo(x, H); }
+  for (let y = oy; y < H; y += gs) { cx.moveTo(0, y); cx.lineTo(W, y); }
+  cx.stroke();
+  const glow = (x, y, r, c) => { const rg = cx.createRadialGradient(x, y, 0, x, y, r); rg.addColorStop(0, c); rg.addColorStop(1, 'rgba(255,255,255,0)'); cx.fillStyle = rg; cx.fillRect(0, 0, W, H); };
+  glow(W * (.85 - p * .5), H * (.25 + Math.sin(p * 6) * .15), Math.max(W, H) * .45, 'rgba(31,111,214,.10)');
+  glow(W * (.1 + p * .5), H * (.8 - Math.cos(p * 5) * .2), Math.max(W, H) * .35, 'rgba(250,90,5,.08)');
+  [[.7, 40, .006, 1.2, 'rgba(250,90,5,.28)', 2], [.78, 26, .009, -1.5, 'rgba(31,111,214,.22)', 1.6], [.6, 60, .004, .8, 'rgba(2,74,158,.10)', 1.5]].forEach(([yb, amp, k, sp, col, lw]) => {
+    const y0 = ((H * yb - sy * .25 * sp) % H + H) % H;
+    cx.beginPath(); cx.strokeStyle = col; cx.lineWidth = lw;
+    for (let x = 0; x <= W; x += 6) { const y = y0 + Math.sin(x * k + t * sp + sy * .004) * amp; x ? cx.lineTo(x, y) : cx.moveTo(x, y); }
+    cx.stroke();
+  });
+};
+
+// ====== Hero: notekis tok → UPS → sof sinusoida ======
+const st = $('stage'), fc = $('flow'), fx = fc.getContext('2d'), upsEl = st.querySelector('.ups');
+let SW = 0, SH = 0;
+const fsize = () => { const d = Math.min(devicePixelRatio || 1, 2); SW = st.clientWidth; SH = st.clientHeight; fc.width = SW * d; fc.height = SH * d; fx.setTransform(d, 0, 0, d, 0, 0); };
+// EKG shakli + shovqin + pasayishlar
+const ecg = u => {
+  const per = 150, ph = ((u % per) + per) % per / per;
+  let v = 0;
+  if (ph > .30 && ph < .36) v = -10 * Math.sin((ph - .30) / .06 * Math.PI);
+  if (ph > .42 && ph < .45) v = 10;
+  if (ph > .45 && ph < .50) v = -70 + (ph - .45) / .05 * 0;
+  if (ph > .45 && ph < .475) v = -70 * (ph - .45) / .025;
+  if (ph >= .475 && ph < .5) v = -70 + 95 * (ph - .475) / .025;
+  if (ph >= .5 && ph < .53) v = 25 - 25 * (ph - .5) / .03;
+  if (ph > .62 && ph < .74) v = -16 * Math.sin((ph - .62) / .12 * Math.PI);
+  return v + Math.sin(u * .9) * 2.5 + Math.sin(u * 2.7) * 1.8 + Math.sin(u * .043) * 10;
+};
+const flowDraw = t => {
+  fx.clearRect(0, 0, SW, SH);
+  const cy = SH * .5, ub = upsEl.getBoundingClientRect(), sb = st.getBoundingClientRect();
+  const L = ub.left - sb.left + ub.width * .22, R = ub.right - sb.left - ub.width * .2;
+  const sp = 120 * t, sc = SH / 340;
+  // kirish
+  fx.lineWidth = 3; fx.lineJoin = 'round';
+  const gl = fx.createLinearGradient(0, 0, L, 0); gl.addColorStop(0, 'rgba(192,57,43,0)'); gl.addColorStop(.25, '#c0392b'); gl.addColorStop(1, '#17a35a');
+  fx.strokeStyle = gl; fx.beginPath();
+  for (let x = 0; x <= L; x += 2) { const y = cy + ecg(x - sp) * sc; x ? fx.lineTo(x, y) : fx.moveTo(x, y); }
+  fx.stroke();
+  // chiqish
+  const gr = fx.createLinearGradient(R, 0, SW, 0); gr.addColorStop(0, '#fa5a05'); gr.addColorStop(.8, '#fa5a05'); gr.addColorStop(1, 'rgba(250,90,5,0)');
+  fx.strokeStyle = gr; fx.lineWidth = 4; fx.shadowColor = 'rgba(250,90,5,.45)'; fx.shadowBlur = 12; fx.beginPath();
+  for (let x = R; x <= SW; x += 2) { const y = cy + Math.sin((x - R - sp) * .045) * 46 * sc; x == R ? fx.moveTo(x, y) : fx.lineTo(x, y); }
+  fx.stroke(); fx.shadowBlur = 0;
+};
+size(); fsize();
+addEventListener('resize', () => { size(); fsize(); });
+addEventListener('scroll', () => { ty = scrollY; nav.classList.toggle('s', scrollY > 20); }, {passive: true});
+const t0 = performance.now();
+const loop = now => { const t = (now - t0) / 1000; bgDraw(t); flowDraw(t); if (!still) requestAnimationFrame(loop); };
+requestAnimationFrame(loop);
+if (still) addEventListener('scroll', () => { sy = ty; bgDraw(0); }, {passive: true});
+upsEl.querySelector('img').addEventListener('load', () => flowDraw((performance.now() - t0) / 1000));
+
+// ====== Paydo bo'lish animatsiyasi ======
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .15});
+
+// ====== TILLAR: UZ / RU / EN ======
+// Statik matnlar: o'zbekcha matn -> [ruscha, inglizcha]
+const D = {
+"Modellar":["Модели","Models"],"Generator":["Генератор","Generator"],"Kalkulyator":["Калькулятор","Calculator"],"Sohalar":["Отрасли","Industries"],"Tender":["Тендеры","Tenders"],"Aloqa":["Контакты","Contact"],
+"Telegramda savol":["Вопрос в Telegram","Ask on Telegram"],
+"O'zbekistondagi rasmiy distribyutor":["Официальный дистрибьютор в Узбекистане","Official distributor in Uzbekistan"],
+"Notekis tok kiradi — sof sinusoida chiqadi":["Нестабильный ток на входе — чистая синусоида на выходе","Unstable power in — pure sine wave out"],
+"Prostar Online UPS tarmoqdagi sakrash va uzilishlarni o'zida \"yutib\", uskunangizga doim toza 220 V beradi. Elektr o'chsa — 0 ms ichida batareyaga o'tadi.":["Онлайн ИБП Prostar «поглощает» скачки и сбои сети и всегда подаёт на ваше оборудование чистые 220 В. При отключении электричества переходит на батареи за 0 мс.","Prostar Online UPS absorbs grid spikes and dropouts and always delivers clean 220 V to your equipment. When power fails, it switches to battery in 0 ms."],
+"UPS tanlash":["Подобрать ИБП","Choose a UPS"],"Narx so'rash":["Узнать цену","Request a price"],
+"Kirish: notekis tarmoq":["Вход: нестабильная сеть","Input: unstable grid"],"sakrash, pasayish, shovqin":["скачки, просадки, помехи","spikes, sags, noise"],
+"Chiqish: sof sinusoida":["Выход: чистая синусоида","Output: pure sine wave"],
+"o'tish vaqti":["время переключения","transfer time"],"omborda bor":["в наличии на складе","in stock"],"buyurtmaga, 45 kun":["под заказ, 45 дней","to order, 45 days"],
+"Nega aynan Online UPS":["Почему именно онлайн ИБП","Why an online UPS"],
+"UPS stabilizator emas. U elektrni ikki marta o'zgartiradi va uskunaga doim toza, barqaror kuchlanish beradi.":["ИБП — это не стабилизатор. Он дважды преобразует электроэнергию и всегда подаёт на оборудование чистое, стабильное напряжение.","A UPS is not a stabilizer. It converts power twice and always feeds your equipment clean, stable voltage."],
+"Tarmoqdagi sakrash, pasayish va shovqin uskunaga yetib bormaydi.":["Скачки, просадки и помехи сети не доходят до оборудования.","Grid spikes, sags and noise never reach your equipment."],
+"0 ms o'tish":["Переход 0 мс","0 ms transfer"],
+"Elektr uzilganda kompyuter, server yoki tibbiy apparat o'chmaydi.":["При отключении сети компьютер, сервер или медицинский аппарат не выключается.","When power fails, computers, servers and medical devices stay on."],
+"Toza sinusoida":["Чистая синусоида","Pure sine wave"],
+"MRT, KT, UZI, laboratoriya va server uskunalari uchun xavfsiz.":["Безопасно для МРТ, КТ, УЗИ, лабораторного и серверного оборудования.","Safe for MRI, CT, ultrasound, lab and server equipment."],
+"Generator bilan ishlaydi":["Работает с генератором","Generator compatible"],
+"Generator chastotasi o'zgarsa ham chiqish barqaror qoladi.":["Выход остаётся стабильным даже при колебаниях частоты генератора.","Output stays stable even when generator frequency drifts."],
+"Bypass va himoya":["Bypass и защита","Bypass and protection"],
+"Ortiqcha yuklama, qisqa tutashuv va batareya himoyasi.":["Защита от перегрузки, короткого замыкания и глубокого разряда батарей.","Overload, short-circuit and battery protection."],
+"Monitoring":["Мониторинг","Monitoring"],"LCD displey, RS-232, USB, SNMP ixtiyoriy.":["LCD-дисплей, RS-232, USB, SNMP опционально.","LCD display, RS-232, USB, optional SNMP."],
+"Omborda mavjud modellar":["Модели в наличии","Models in stock"],
+"PET seriyasi — yuqori chastotali Online UPS, ichki 12V 9Ah batareyalar bilan.":["Серия PET — высокочастотные онлайн ИБП со встроенными батареями 12 В 9 Ач.","PET series — high-frequency online UPS with built-in 12V 9Ah batteries."],
+"To'liq texnik parametrlar (tender uchun)":["Полные технические характеристики (для тендеров)","Full technical specifications (for tenders)"],
+"Parametr":["Параметр","Parameter"],"Quvvat (VA/W)":["Мощность (ВА/Вт)","Capacity (VA/W)"],"Batareya kuchlanishi":["Напряжение батарей","Battery voltage"],"Batareyalar":["Батареи","Batteries"],"Zaryad toki":["Ток заряда","Charging current"],
+"Kirish formati / kuchlanish":["Вход / напряжение","Input format / voltage"],"Kirish diapazoni":["Входной диапазон","Input range"],"Kirish quvvat koeffitsienti":["Входной коэффициент мощности","Input power factor"],"Chiqish quvvat koeffitsienti":["Выходной коэффициент мощности","Output power factor"],
+"Chiqish kuchlanishi aniqligi":["Точность выходного напряжения","Output voltage regulation"],"±1% · batareya rejimida 50/60 Hz ±1%":["±1% · в режиме батарей 50/60 Гц ±1%","±1% · battery mode 50/60 Hz ±1%"],
+"Chiqish THD (chiziqli yuklama)":["Выходной THD (линейная нагрузка)","Output THD (linear load)"],"To'lqin shakli":["Форма волны","Waveform"],
+"O'tish vaqti (tarmoq → batareya)":["Время переключения (сеть → батарея)","Transfer time (mains → battery)"],
+"Ortiqcha yuklama (tarmoq rejimi)":["Перегрузка (сетевой режим)","Overload (mains mode)"],"102–110%: 30 daq · 110–130%: 10 daq · 130–150%: 30 s":["102–110%: 30 мин · 110–130%: 10 мин · 130–150%: 30 с","102–110%: 30 min · 110–130%: 10 min · 130–150%: 30 s"],
+"O'lchami (↔ × ↗ × ↕)":["Размеры (↔ × ↗ × ↕)","Dimensions (↔ × ↗ × ↕)"],"39.5 × 19 × 33 sm":["39.5 × 19 × 33 см","39.5 × 19 × 33 cm"],"47.5 × 19 × 69.6 sm":["47.5 × 19 × 69.6 см","47.5 × 19 × 69.6 cm"],
+"Og'irligi":["Вес","Weight"],"20 kg":["20 кг","20 kg"],"52 kg":["52 кг","52 kg"],"53 kg":["53 кг","53 kg"],
+"Ish harorati / namlik":["Рабочая температура / влажность","Operating temperature / humidity"],"0–40 °C · 20–95% (kondensatsiyasiz)":["0–40 °C · 20–95% (без конденсата)","0–40 °C · 20–95% (non-condensing)"],
+"Shovqin":["Шум","Noise"],"Boshqaruv":["Управление","Management"],"LCD · RS-232 / USB · SNMP ixtiyoriy":["LCD · RS-232 / USB · SNMP опционально","LCD · RS-232 / USB · optional SNMP"],
+"Katta quvvatli UPS — 20 dan 600 kVA gacha":["ИБП большой мощности — от 20 до 600 кВА","High-power UPS — 20 to 600 kVA"],
+"Bino, shifoxona, zavod va data-markazlar uchun. Buyurtma asosida.":["Для зданий, больниц, заводов и дата-центров. Под заказ.","For buildings, hospitals, factories and data centers. Made to order."],
+"45 kunda yetkaziladi":["Поставка за 45 дней","Delivered in 45 days"],
+"Elektr o'chganda — generator yonguncha UPS ishlaydi":["При отключении света ИБП работает, пока запускается генератор","When power fails, the UPS runs until the generator starts"],
+"Katta binolarda generator ishga tushishi uchun 10–30 soniya kerak. Shu vaqtda UPS uskunalarni bir lahza ham o'chirmasdan ushlab turadi.":["В больших зданиях генератору нужно 10–30 секунд на запуск. Всё это время ИБП держит оборудование, не допуская ни мгновения простоя.","In large buildings a generator needs 10–30 seconds to start. During that time the UPS keeps equipment running without a single moment of downtime."],
+"Tarmoq uzildi":["Сеть отключилась","Mains power lost"],"UPS 0 ms ichida batareyaga o'tadi":["ИБП переходит на батареи за 0 мс","UPS switches to battery in 0 ms"],
+"Generator ishga tushmoqda":["Генератор запускается","Generator starting"],"10–30 soniya: yuklamani UPS ushlab turadi":["10–30 секунд: нагрузку держит ИБП","10–30 seconds: the UPS carries the load"],
+"ATS generatorga ulaydi":["АВР переключает на генератор","ATS switches to generator"],"UPS generator kuchlanishini tozalab uzatadi":["ИБП очищает и передаёт напряжение генератора","UPS cleans and passes generator power"],
+"Tarmoq qaytdi":["Сеть восстановлена","Mains power restored"],"Hech qanday uzilishsiz, batareyalar qayta zaryadlanadi":["Без перерывов, батареи заряжаются","No interruption, batteries recharge"],
+"1. Tarmoq":["1. Сеть","1. Grid"],"elektr uzildi":["электричество отключилось","power is lost"],"2. UPS — ko'prik":["2. ИБП — мост","2. UPS — the bridge"],"0 ms ichida batareyaga, 10–30 s ushlab turadi":["за 0 мс на батареи, держит 10–30 с","to battery in 0 ms, holds for 10–30 s"],
+"3. Generator va shifoxona":["3. Генератор и больница","3. Generator and hospital"],"generator ulanguncha uskunalar uzluksiz ishlaydi":["оборудование работает без перерыва до подключения генератора","equipment runs non-stop until the generator takes over"],
+"UPS kalkulyatori":["Калькулятор ИБП","UPS calculator"],
+"Uskunalaringiz va quvvatini kiriting (W yoki kW). Kalkulyator kerakli modelni va taxminiy ishlash vaqtini hisoblaydi.":["Введите оборудование и его мощность (Вт или кВт). Калькулятор подберёт модель и рассчитает примерное время работы.","Enter your equipment and its power (W or kW). The calculator picks the right model and estimates runtime."],
+"Uskuna":["Оборудование","Equipment"],"Quvvat":["Мощность","Power"],"Birlik":["Ед.","Unit"],"Soni":["Кол-во","Qty"],
+"+ Uskuna qo'shish":["+ Добавить оборудование","+ Add equipment"],"Tibbiy uskunalar":["Медицинское оборудование","Medical equipment"],"IT va ofis":["IT и офис","IT and office"],
+"Ro'yxatdagi quvvatlar taxminiy. Aniq qiymatni uskuna pasportidan oling.":["Мощности в списке примерные. Точное значение смотрите в паспорте оборудования.","Listed power values are approximate. Check the equipment datasheet for exact values."],
+"Elektr o'chganda qancha ishlashi kerak?":["Сколько должно работать при отключении света?","How long should it run during an outage?"],
+"5 daqiqa — generator yonguncha":["5 минут — до запуска генератора","5 minutes — until the generator starts"],"10 daqiqa":["10 минут","10 minutes"],"15 daqiqa":["15 минут","15 minutes"],"30 daqiqa":["30 минут","30 minutes"],"1 soat":["1 час","1 hour"],"2 soat":["2 часа","2 hours"],"4 soat":["4 часа","4 hours"],
+"Kimlar uchun":["Для кого","Who it's for"],"Bir soniyalik uzilish ham qimmatga tushadigan joylar uchun.":["Для объектов, где даже секунда простоя обходится дорого.","For places where even one second of downtime is costly."],
+"Tibbiyot":["Медицина","Healthcare"],"MRT, KT, C-duga, UZI, laboratoriya, reanimatsiya va operatsion xonalar.":["МРТ, КТ, С-дуга, УЗИ, лаборатории, реанимация и операционные.","MRI, CT, C-arm, ultrasound, labs, ICU and operating rooms."],
+"Banklar":["Банки","Banks"],"Kassa, bankomat, server va xavfsizlik tizimlari.":["Кассы, банкоматы, серверы и системы безопасности.","Tellers, ATMs, servers and security systems."],
+"Data-markaz va IT":["Дата-центры и IT","Data centers and IT"],"Server xonalari, call-center, internet provayderlar.":["Серверные, колл-центры, интернет-провайдеры.","Server rooms, call centers, internet providers."],
+"Sanoat":["Промышленность","Industry"],"Zavodlar, farmatsevtika, avtomatlashtirilgan liniyalar.":["Заводы, фармацевтика, автоматизированные линии.","Factories, pharmaceuticals, automated lines."],
+"Davlat tashkilotlari":["Госучреждения","Government"],"Shifoxona, maktab, hokimiyat — tender orqali yetkazib berish.":["Больницы, школы, хокимияты — поставка через тендер.","Hospitals, schools, municipalities — supply via tender."],
+"Katta binolar":["Крупные здания","Large buildings"],"Biznes-markaz, mehmonxona: generator yonguncha uzluksiz ta'minot.":["Бизнес-центры, гостиницы: бесперебойное питание до запуска генератора.","Business centers, hotels: uninterrupted power until the generator starts."],
+"Davlat xaridlari va tenderlar":["Госзакупки и тендеры","Public procurement and tenders"],
+"Rasmiy distribyutor sifatida tender uchun kerakli hujjatlarni tayyorlab beramiz va texnik topshiriqni to'g'ri yozishga yordam beramiz.":["Как официальный дистрибьютор, мы готовим документы для тендера и помогаем правильно составить техническое задание.","As the official distributor, we prepare tender documents and help you write the technical specification correctly."],
+"Hujjatlarni so'rash":["Запросить документы","Request documents"],"Distribyutorlik xati":["Дистрибьюторское письмо","Distributor letter"],"Muvofiqlik sertifikatlari":["Сертификаты соответствия","Compliance certificates"],"Texnik pasport va datasheet":["Техпаспорт и datasheet","Technical passport and datasheet"],"Tijorat taklifi":["Коммерческое предложение","Commercial offer"],"Kafolat va servis xizmati":["Гарантия и сервис","Warranty and service"],"Toshkent":["Ташкент","Tashkent"],
+"Savolingiz bormi?":["Есть вопросы?","Have a question?"],
+"Qo'ng'iroq qiling yoki Telegramda yozing — mos UPS ni tanlab, narx taklifini tayyorlab beramiz.":["Позвоните или напишите в Telegram — подберём ИБП и подготовим ценовое предложение.","Call us or message us on Telegram — we'll pick the right UPS and prepare a quote."],
+"Tenderda g'olib bo'ldingizmi? UPS ni biz yetkazib beramiz":["Выиграли тендер? Поставим ИБП для вас","Won a tender? We'll supply the UPS"],
+"Davlat xaridlarida g'olib bo'lgan kompaniyalarga Prostar UPS larini shartnoma muddatida, to'liq hujjatlari bilan yetkazib beramiz.":["Компаниям-победителям госзакупок поставляем ИБП Prostar в срок по договору и с полным пакетом документов.","For companies that won public tenders, we deliver Prostar UPS units on the contract schedule with full documentation."],
+"Shartnoma bo'yicha so'rov yuborish":["Отправить запрос по договору","Send a contract request"],
+"Omborda tayyor":["Готово на складе","Ready in stock"],"3, 6 va 10 kVA darhol jo'natiladi, 20–600 kVA — 45 kunda.":["3, 6 и 10 кВА отгружаем сразу, 20–600 кВА — за 45 дней.","3, 6 and 10 kVA ship immediately, 20–600 kVA in 45 days."],
+"Texnik topshiriqqa moslik":["Соответствие ТЗ","Matches the specification"],"Texnik topshiriqni tekshirib, mos modelni tanlab beramiz.":["Проверим техническое задание и подберём подходящую модель.","We check the technical specification and select the right model."],
+"To'liq hujjatlar":["Полный пакет документов","Full documentation"],"Hisob-faktura, sertifikatlar, distribyutorlik xati, kafolat.":["Счёт-фактура, сертификаты, дистрибьюторское письмо, гарантия.","Invoice, certificates, distributor letter, warranty."],
+"Obyektgacha yetkazib berish":["Доставка до объекта","Delivery to site"],"Shartnomada ko'rsatilgan manzilga yetkazamiz.":["Доставим по адресу, указанному в договоре.","Delivered to the address in your contract."],
+"Bizning do'kon":["Наш магазин","Our store"],"Do'konimizga keling — UPS larni jonli ko'rib, mutaxassis bilan maslahatlashing.":["Приходите в наш магазин — посмотрите ИБП вживую и проконсультируйтесь со специалистом.","Visit our store — see the UPS units in person and talk to a specialist."],"Yandex Xaritalar":["Яндекс Карты","Yandex Maps"],"Google Xaritalar":["Google Карты","Google Maps"],"Yandex Navigator":["Яндекс Навигатор","Yandex Navigator"],
+"A3 bino, A3-6 do'kon":["Корпус A3, магазин A3-6","Building A3, store A3-6"],"A3 bino":["Корпус A3","Building A3"],"A3-6 do'kon":["Магазин A3-6","Store A3-6"],"Omborda tayyor UPS lar":["ИБП в наличии на складе","UPS units in stock"],
+"Manzil":["Адрес","Address"],"Toshkent shahri, Sergeli tumani, INDEX savdo majmuasi, A3-6":["г. Ташкент, Сергелийский район, ТЦ INDEX, A3-6","INDEX Shopping Center, A3-6, Sergeli district, Tashkent"],
+"Toshkent shahri, Sergeli tumani, INDEX savdo majmuasi":["г. Ташкент, Сергелийский район, ТЦ INDEX","INDEX Shopping Center, Sergeli district, Tashkent"],"Narxi":["Цена","Price"],"so'm":["сум","UZS"],
+"Telegramda yozish":["Написать в Telegram","Message on Telegram"],"Telefon":["Телефон","Phone"],
+"© 2026 Prostar UPS Uzbekistan — Guangdong Prostar New Energy Technology Co., Ltd. rasmiy distribyutori · prostarups.uz · +998 77 122 1444":["© 2026 Prostar UPS Uzbekistan — официальный дистрибьютор Guangdong Prostar New Energy Technology Co., Ltd. · prostarups.uz · +998 77 122 1444","© 2026 Prostar UPS Uzbekistan — official distributor of Guangdong Prostar New Energy Technology Co., Ltd. · prostarups.uz · +998 77 122 1444"],
+// dinamik
+"Omborda bor":["В наличии","In stock"],"Buyurtmaga, 45 kun":["Под заказ, 45 дней","To order, 45 days"],"Stabilizator ichida":["Встроенный стабилизатор","Built-in stabilizer"],
+"Model":["Модель","Model"],"Batareya (ichida)":["Батареи (встроенные)","Batteries (built-in)"],"Chiqish stabilizatsiyasi":["Стабилизация выхода","Output regulation"],"Tarmoq → batareya":["Сеть → батарея","Mains → battery"],
+"sm":["см","cm"],"kg":["кг","kg"],"Uskuna nomi":["Название оборудования","Equipment name"],"O'chirish":["Удалить","Remove"],
+"Natija":["Результат","Result"],"Kamida bitta uskuna va uning quvvatini kiriting.":["Введите хотя бы одно устройство и его мощность.","Enter at least one device and its power."],
+"Umumiy yuklama":["Общая нагрузка","Total load"],"Tavsiya etilgan quvvat":["Рекомендуемая мощность","Recommended capacity"],"Ichki batareya bilan":["На встроенных батареях","On built-in batteries"],"Zaxira vaqti":["Время резерва","Backup time"],"loyiha bo'yicha":["по проекту","per project"],
+"Shu konfiguratsiyaga narx so'rash":["Узнать цену на эту конфигурацию","Request a price for this setup"],"Natijani nusxalash":["Скопировать результат","Copy result"],"Nusxalandi":["Скопировано","Copied"],"Nusxalab bo'lmadi":["Не удалось скопировать","Could not copy"],
+"Hisob taxminiy: 25% zaxira qo'shilgan; batareya holati va harorat natijaga ta'sir qiladi.":["Расчёт примерный: добавлен запас 25%; на результат влияют состояние батарей и температура.","Estimate only: 25% headroom added; battery condition and temperature affect the result."],
+"Loyiha so'rash":["Запросить проект","Request a project"],
+// uskunalar
+"UZI apparati":["Аппарат УЗИ","Ultrasound scanner"],"C-duga (mobil rentgen)":["С-дуга (мобильный рентген)","C-arm (mobile X-ray)"],"MRT (to'liq tizim)":["МРТ (вся система)","MRI (full system)"],"MRT konsoli va kompyuteri":["Консоль и компьютер МРТ","MRI console and computer"],"KT (kompyuter tomograf)":["КТ (компьютерный томограф)","CT scanner"],"Raqamli rentgen ish stansiyasi":["Рабочая станция цифрового рентгена","Digital X-ray workstation"],"Biokimyoviy analizator":["Биохимический анализатор","Biochemistry analyzer"],"Gematologik analizator":["Гематологический анализатор","Hematology analyzer"],"PCR amplifikator":["ПЦР-амплификатор","PCR thermocycler"],"Sun'iy nafas (IVL) apparati":["Аппарат ИВЛ","Ventilator"],"Narkoz apparati":["Наркозный аппарат","Anesthesia machine"],"Bemor monitori":["Монитор пациента","Patient monitor"],"EKG apparati":["Аппарат ЭКГ","ECG machine"],"Endoskopik stoyka":["Эндоскопическая стойка","Endoscopy tower"],"Operatsion chiroq (LED)":["Операционный светильник (LED)","Surgical light (LED)"],"Chaqaloq inkubatori":["Инкубатор для новорождённых","Infant incubator"],"Dializ apparati":["Аппарат диализа","Dialysis machine"],"Stomatologik ustanovka":["Стоматологическая установка","Dental unit"],
+"Server":["Сервер","Server"],"Kompyuter":["Компьютер","Computer"],"Monitor":["Монитор","Monitor"],"Router / switch":["Роутер / коммутатор","Router / switch"],"CCTV DVR":["Видеорегистратор","CCTV DVR"],"IP kamera":["IP-камера","IP camera"],"Kassa apparati":["Кассовый аппарат","Cash register"]
+};
+const LI = {uz: -1, ru: 0, en: 1};
+let lang = 'uz';
+try { lang = localStorage.getItem('ps_lang') || 'uz'; } catch(e) {}
+if (!(lang in LI)) lang = 'uz';
+const t = s => lang == 'uz' ? s : ((D[s] || [])[LI[lang]] || s);
+// Gaplar (o'zgaruvchilar bilan)
+const S = {
+  uz: {
+    min: m => `${Math.round(m)} daqiqa`, hr: (h, m) => `${h} soat${m ? ' ' + m + ' daq' : ''}`,
+    inOk: (n, tt) => `Ichki batareyalar (${n} × 12V 9Ah) siz tanlagan ${tt} uchun yetadi.`,
+    ext: (tt, e, n, ah, got) => `${tt} ishlashi uchun tashqi batareya shkafli <b>${e}</b> + <b>${n} × 12V ${ah}Ah</b> kerak — taxminan ${got}. Bu variant buyurtma asosida.`,
+    big: tt => `${tt} uchun katta batareya shkafi kerak — mutaxassis hisoblab beradi.`,
+    ord: `Bu model buyurtma asosida <b>45 kunda</b> yetkaziladi. Generator bo'lsa, odatda 5–15 daqiqalik zaxira yetarli — batareya sonini mutaxassis hisoblaydi.`,
+    par: `Bu quvvat uchun bir nechta UPS ni parallel ulash kerak. Mutaxassisimiz loyiha tayyorlab beradi.`,
+    heavy: l => `${l} — ishga tushish toki juda katta. Bunday uskunalarni UPS ga ulash tavsiya etilmaydi.`
+  },
+  ru: {
+    min: m => `${Math.round(m)} мин`, hr: (h, m) => `${h} ч${m ? ' ' + m + ' мин' : ''}`,
+    inOk: (n, tt) => `Встроенных батарей (${n} × 12 В 9 Ач) хватит на выбранные ${tt}.`,
+    ext: (tt, e, n, ah, got) => `Для работы ${tt} нужен <b>${e}</b> с внешним батарейным шкафом + <b>${n} × 12 В ${ah} Ач</b> — примерно ${got}. Этот вариант под заказ.`,
+    big: tt => `Для ${tt} нужен большой батарейный шкаф — специалист сделает расчёт.`,
+    ord: `Эта модель поставляется под заказ за <b>45 дней</b>. При наличии генератора обычно достаточно резерва 5–15 минут — количество батарей рассчитает специалист.`,
+    par: `Для такой мощности нужно параллельное подключение нескольких ИБП. Наш специалист подготовит проект.`,
+    heavy: l => `${l} — очень большой пусковой ток. Подключать такое оборудование к ИБП не рекомендуется.`
+  },
+  en: {
+    min: m => `${Math.round(m)} min`, hr: (h, m) => `${h} h${m ? ' ' + m + ' min' : ''}`,
+    inOk: (n, tt) => `The built-in batteries (${n} × 12V 9Ah) are enough for your ${tt}.`,
+    ext: (tt, e, n, ah, got) => `For ${tt} of runtime you need <b>${e}</b> with an external battery cabinet + <b>${n} × 12V ${ah}Ah</b> — about ${got}. This option is made to order.`,
+    big: tt => `${tt} requires a large battery cabinet — our engineer will calculate it.`,
+    ord: `This model is made to order and delivered in <b>45 days</b>. With a generator, 5–15 minutes of backup is usually enough — our engineer will size the batteries.`,
+    par: `This load needs several UPS units in parallel. Our engineer will prepare a project.`,
+    heavy: l => `${l} — very high inrush current. Connecting such equipment to a UPS is not recommended.`
+  }
+};
+const s_ = () => S[lang];
+
+// Statik matnlarni almashtirish
+const tnodes = [];
+{
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode: n => n.parentElement.closest('script,style,[data-dyn]') || !n.nodeValue.trim() ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  let n; while (n = w.nextNode()) tnodes.push([n, n.nodeValue]);
+}
+const attrs = [...document.querySelectorAll('img[alt]')].map(e => [e, e.alt]);
+const applyStatic = () => {
+  for (const [n, o] of tnodes) { const k = o.trim(); if (D[k]) n.nodeValue = o.replace(k, t(k)); }
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l == lang));
+};
+
+// ====== Modellar (katalog V202511, batareya 12V 9Ah) ======
+const M = [
+  {kva:3,  b:'PET1103B', e:'PET1103', nIn:6,  nEx:8,  eff:.915, size:'39.5 × 19 × 33', kg:20, price:4680000, stock:1},
+  {kva:6,  b:'PET1106B', e:'PET1106', nIn:16, nEx:16, eff:.948, size:'47.5 × 19 × 69.6', kg:52, price:10920000, stock:1},
+  {kva:10, b:'PET1110B', e:'PET1110', nIn:16, nEx:16, eff:.948, size:'47.5 × 19 × 69.6', kg:53, price:15600000, stock:1}
+];
+const ORD = [20,30,40,60,80,100,120,160,200,250,300,400,500,600];
+const ORDN = {20:'PET3320',30:'PET3330',40:'PET3340',60:'PET3360'};
+ORD.forEach(k => M.push({kva:k, e: ORDN[k] || 'Sanoat UPS', stock:0}));
+$('big').innerHTML = ORD.map(k => `<span>${k} kVA</span>`).join('');
+const ups = n => `<svg viewBox="0 0 300 150" aria-hidden="true"><rect x="${118-n*2}" y="${30-n}" width="${64+n*4}" height="${110+n}" rx="8" fill="#1d232a"/><rect x="${130-n}" y="${44-n}" width="${40+n*2}" height="24" rx="4" fill="#2b6cd4"/></svg>`;
+// Narx: oxirgi 000 kichik yoziladi
+const fp = n => { const k = Math.floor(n / 1000), r = String(n % 1000).padStart(3, '0'); return `<span class="price">${k.toLocaleString('ru-RU').replace(/\u00a0/g, ' ')}<small> ${r}</small> <i>${t("so'm")}</i></span>`; };
+const renderCards = () => {
+  $('prods').innerHTML = M.filter(m => m.stock).map(m => `
+  <div class="prod card rv in">
+    <div class="pic"><img src="img/${m.b.toLowerCase()}.webp" alt="Prostar ${m.b} ${m.kva} kVA Online UPS" loading="lazy" onerror="this.remove()">${ups(m.kva)}</div>
+    <div class="kva">${m.kva} <small>kVA / ${m.kva} kW</small></div>
+    <span class="st">${t('Omborda bor')}</span>
+    <div class="pbox"><span>${t('Narxi')}</span>${fp(m.price)}</div>
+    <div class="tags"><span>${t("0 ms o'tish")}</span><span>Double Conversion</span><span>${t('Stabilizator ichida')}</span><span>&lt; 45 dB</span></div>
+    <ul class="spec">
+      <li>${t('Model')}<b>${m.b}</b></li>
+      <li>${t('Batareya (ichida)')}<b>${m.nIn} × 12V 9Ah</b></li>
+      <li>${t('Kirish diapazoni')}<b>110–300 V</b></li>
+      <li>${t('Chiqish stabilizatsiyasi')}<b>220 V ±1%</b></li>
+      <li>${t('Tarmoq → batareya')}<b>0 ms</b></li>
+      <li>${t('Shovqin')}<b>&lt; 45 dB</b></li>
+      <li>${t("O'lchami (↔ × ↗ × ↕)")}<b>${m.size} ${t('sm')}</b></li>
+      <li>${t("Og'irligi")}<b>${m.kg} ${t('kg')}</b></li>
+    </ul>
+  </div>`).join('');
+};
+
+// ====== Kalkulyator ======
+const MED = [['UZI apparati',600],['C-duga (mobil rentgen)',3000],["MRT (to'liq tizim)",80000],['MRT konsoli va kompyuteri',1500],['KT (kompyuter tomograf)',80000],['Raqamli rentgen ish stansiyasi',1000],['Biokimyoviy analizator',1500],['Gematologik analizator',300],['PCR amplifikator',800],["Sun'iy nafas (IVL) apparati",200],['Narkoz apparati',300],['Bemor monitori',60],['EKG apparati',50],['Endoskopik stoyka',800],['Operatsion chiroq (LED)',150],['Chaqaloq inkubatori',500],['Dializ apparati',1500],['Stomatologik ustanovka',600]];
+const IT = [['Server',500],['Kompyuter',250],['Monitor',40],['Router / switch',40],['CCTV DVR',30],['IP kamera',5],['Kassa apparati',60]];
+const HEAVY = /konditsioner|pechka|choynak|dazmol|kompressor|\bnasos\b|lazer printer|isitgich|кондиционер|насос|печь|чайник|утюг|компрессор|обогреват|air condition|pump|heater|kettle|compressor|laser printer|лазерный принтер/i;
+let rows = [{n:'UZI apparati',p:600,u:'W',q:1},{n:'Kompyuter',p:250,u:'W',q:2},{n:'Bemor monitori',p:60,u:'W',q:2}];
+try { const s = JSON.parse(localStorage.getItem('ps_rows2')); if (Array.isArray(s) && s.length) rows = s; } catch(e) {}
+const R = $('rows'), out = $('res'), tm = $('tm');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Ro'yxatdan qo'shilgan nomlar til almashganda tarjima bo'ladi
+const allNames = [...MED, ...IT].map(x => x[0]);
+const nameKey = n => allNames.find(k => k == n || (D[k] && D[k].includes(n)));
+const draw = () => {
+  rows.forEach(r => { const k = nameKey(r.n); if (k) r.n = t(k); });
+  R.innerHTML = rows.map((r, i) => `<div class="row" data-i="${i}">
+    <input class="nm" data-k="n" value="${esc(r.n)}" placeholder="${t('Uskuna nomi')}" aria-label="${t('Uskuna nomi')}">
+    <input data-k="p" type="number" min="0" step="any" inputmode="decimal" value="${esc(r.p)}" aria-label="${t('Quvvat')}">
+    <select data-k="u" aria-label="${t('Birlik')}"><option value="W"${r.u=='W'?' selected':''}>${lang=='ru'?'Вт':'W'}</option><option value="kW"${r.u=='kW'?' selected':''}>${lang=='ru'?'кВт':'kW'}</option></select>
+    <input data-k="q" type="number" min="1" step="1" inputmode="numeric" value="${esc(r.q)}" aria-label="${t('Soni')}">
+    <button class="x" data-del aria-label="${t("O'chirish")}">×</button></div>`).join('');
+  calc();
+};
+// k — batareyaning real sig'im koeffitsienti: tez razryadda pasayadi
+const kf = (w, n, eff, ah) => { const I = w / (n * eff) / 12; return Math.min(.88, Math.max(.45, .9 - .22 * I / ah)); };
+const mins = (w, n, eff, ah) => n * 12 * ah * eff * kf(w, n, eff, ah) / w * 60;
+const fmt = m => m >= 60 ? s_().hr(Math.floor(m/60), Math.round(m%60)) : s_().min(m);
+const AH = [12,17,24,40,65,100,120,150,200];
+let last = '';
+const calc = () => {
+  try { localStorage.setItem('ps_rows2', JSON.stringify(rows)); } catch(e) {}
+  const w = rows.reduce((s, r) => s + (parseFloat(r.p) || 0) * (r.u == 'kW' ? 1000 : 1) * (parseInt(r.q) || 0), 0);
+  const need = w * 1.25, tt = +tm.value;
+  const heavy = rows.filter(r => HEAVY.test(r.n)).map(r => esc(r.n));
+  const warn = heavy.length ? `<div class="warn">${s_().heavy(heavy.join(', '))}</div>` : '';
+  if (!w) { out.innerHTML = `<div class="lbl">${t('Natija')}</div><p style="margin-top:10px">${t('Kamida bitta uskuna va uning quvvatini kiriting.')}</p>`; return; }
+  const m = M.find(x => x.kva * 1000 >= need);
+  const load = w >= 1000 ? (w/1000).toFixed(w >= 10000 ? 0 : 2) + (lang=='ru'?' кВт':' kW') : Math.round(w) + (lang=='ru'?' Вт':' W');
+  if (!m) {
+    last = `Prostar: ${t('Umumiy yuklama')} ${load}, > 600 kVA.`;
+    out.innerHTML = `<div class="lbl">${t('Umumiy yuklama')}</div><div class="model">${load}</div>${warn}<p>${s_().par}</p><a class="btn y" href="${TG}">${t("Loyiha so'rash")}</a>`;
+    return;
+  }
+  let body = '', backup = '—';
+  if (m.stock) {
+    const tin = mins(w, m.nIn, m.eff, 9);
+    backup = fmt(tin);
+    if (tin >= tt) body = `<p>${s_().inOk(m.nIn, fmt(tt))}</p>`;
+    else {
+      const ah = AH.find(a => mins(w, m.nEx, m.eff, a) >= tt);
+      body = ah ? `<p>${s_().ext(fmt(tt), m.e, m.nEx, ah, fmt(mins(w, m.nEx, m.eff, ah)))}</p>` : `<p>${s_().big(fmt(tt))}</p>`;
+    }
+  } else { backup = t("loyiha bo'yicha"); body = `<p>${s_().ord}</p>`; }
+  const name = m.stock ? m.b : (m.e == 'Sanoat UPS' ? (lang=='ru'?'Промышленный ИБП':lang=='en'?'Industrial UPS':m.e) : m.e);
+  last = `Prostar UPS: ${t('Umumiy yuklama')} ${load} → ${name} (${m.kva} kVA)${m.price ? ', ' + m.price.toLocaleString('ru-RU') + ' ' + t("so'm") : ''}, ${fmt(tt)}. ${rows.filter(r => r.n).map(r => r.n + ' ×' + r.q).join(', ')}.`;
+  out.innerHTML = `<div class="lbl">${t('Tavsiya etilgan quvvat')}</div>
+    <div class="model">${m.kva} kVA</div>
+    <div>${name} · <span class="st${m.stock ? '' : ' ord'}">${t(m.stock ? 'Omborda bor' : 'Buyurtmaga, 45 kun')}</span></div>
+    ${m.price ? `<div class="rprice">${t('Narxi')}: ${fp(m.price)}</div>` : ''}
+    <div class="grid"><div><span class="lbl">${t('Umumiy yuklama')}</span><b>${load}</b></div>
+    <div><span class="lbl">${t(m.stock ? 'Ichki batareya bilan' : 'Zaxira vaqti')}</span><b>${backup}</b></div></div>
+    ${warn}${body}
+    <a class="btn y" href="${TG}">${t("Shu konfiguratsiyaga narx so'rash")}</a>
+    <button class="btn o" id="cp">${t('Natijani nusxalash')}</button>
+    <div class="note">${t("Hisob taxminiy: 25% zaxira qo'shilgan; batareya holati va harorat natijaga ta'sir qiladi.")}</div>`;
+};
+R.addEventListener('input', e => { const i = e.target.closest('.row')?.dataset.i, k = e.target.dataset.k; if (i == null || !k) return; rows[i][k] = e.target.value; calc(); });
+R.addEventListener('click', e => { if (!e.target.hasAttribute('data-del')) return; rows.splice(+e.target.closest('.row').dataset.i, 1); draw(); });
+$('add').addEventListener('click', () => { rows.push({n:'', p:'', u:'W', q:1}); draw(); R.querySelector('.row:last-child .nm').focus(); });
+const chips = (el, list) => {
+  el.dataset.dyn = '';
+  const r = () => el.innerHTML = list.map((p, i) => `<button data-p="${i}">+ ${esc(t(p[0]))}</button>`).join('');
+  r(); el.addEventListener('click', e => { const i = e.target.dataset.p; if (i == null) return; const v = list[i][1]; rows.push(v >= 10000 ? {n:t(list[i][0]), p:v/1000, u:'kW', q:1} : {n:t(list[i][0]), p:v, u:'W', q:1}); draw(); });
+  return r;
+};
+const rMed = chips($('chMed'), MED), rIt = chips($('chIt'), IT);
+tm.addEventListener('change', calc);
+out.addEventListener('click', async e => { if (e.target.id != 'cp') return; try { await navigator.clipboard.writeText(last); e.target.textContent = t('Nusxalandi'); } catch(err) { e.target.textContent = t("Nusxalab bo'lmadi"); } });
+
+// Jonli xarita: o'z domeningizda Yandex xaritasi yuklanadi
+if (!/claude\.ai|claudeusercontent/.test(location.hostname) && location.protocol.startsWith('http')) {
+  const f = document.createElement('iframe');
+  f.src = 'https://yandex.ru/map-widget/v1/?ll=69.237884%2C41.205064&z=16&pt=69.237884,41.205064,pm2rdm';
+  f.loading = 'lazy'; f.title = 'Prostar — INDEX savdo majmuasi';
+  $('map').appendChild(f);
+}
+// Tilni almashtirish
+const setLang = l => {
+  lang = l; try { localStorage.setItem('ps_lang', l); } catch(e) {}
+  applyStatic(); renderCards(); rMed(); rIt(); draw();
+};
+document.querySelector('.lang').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setLang(b.dataset.l); });
+setLang(lang);
+document.querySelectorAll('.rv, #tl').forEach(el => io.observe(el));
+}
+</script>
+
+</body>
+</html>
